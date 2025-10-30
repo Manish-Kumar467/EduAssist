@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st # type: ignore
 
 st.set_page_config(page_title="EduAssist", page_icon="🎓", layout="wide")
 
