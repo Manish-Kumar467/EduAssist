@@ -6,7 +6,7 @@ st.set_page_config(page_title="EduAssist Login", page_icon="🎓", layout="cente
 init_session()
 
 if st.session_state["logged_in"] is True:
-    st.switch_page("Home.py")
+    st.switch_page("pages/Home")
 
 st.title("🔐 Login to EduAssist")
 
@@ -16,6 +16,6 @@ password = st.text_input("Password", type="password")
 if st.button("Login"):
     if login(username, password):
         st.success("Login successful!")
-        st.switch_page("Home.py")
+        st.switch_page("pages/Home")
     else:
         st.error("Invalid username or password")
