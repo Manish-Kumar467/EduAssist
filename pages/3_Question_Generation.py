@@ -23,4 +23,4 @@ st.title("❓ Question Generation Module")
 st.write("This is where your question generation logic will go.")
 
 if st.button("⬅️ Back to Home"):
-    st.switch_page("/4_Home.py")
+    st.switch_page("/1_Home.py")
