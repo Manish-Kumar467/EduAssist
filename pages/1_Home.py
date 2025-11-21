@@ -74,8 +74,9 @@ st.markdown("<div class='navbar'>", unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns([1,1,1,1])
 
 with col1:
-    if st.button("🏠 Home" ,key="navbar_home"):
-        st.experimental_rerun()  # reload current page
+    if st.button("🏠 Home" ):
+        st.switch_page("pages/1_Home.py")
+        
 
 with col2:
     if st.button("📝 Summarization"):
