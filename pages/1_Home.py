@@ -23,7 +23,7 @@ st.markdown("""
     .navbar {
         width: 100%;
         background-color: #4B4BFF;
-        padding: 15px 0;
+        height:10vh;
         
         border-radius: 0 0 15px 15px;
     }
