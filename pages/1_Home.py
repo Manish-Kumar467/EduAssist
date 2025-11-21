@@ -133,13 +133,13 @@ for module in modules:
 col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("📝 Go to Summarization"):
-        st.switch_page("2_Summarization")
+        st.switch_page("pages/2_Summarization.py")
 
 with col2:
     if st.button("❓ Go to Question Generation"):
-        st.switch_page("3_Question_Generation")
+        st.switch_page("pages/3_Question_Generation.py")
 
 with col3:
     if st.button("🚪 Logout"):
         st.session_state["logged_in"] = False
-        st.switch_page("streamlit_app")
+        st.switch_page("streamlit_app.py")
