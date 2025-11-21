@@ -79,16 +79,16 @@ with col1:
 
 with col2:
     if st.button("📝 Summarization"):
-        st.switch_page("2_Summarization")
+        st.switch_page("pages/2_Summarization.py")
 
 with col3:
     if st.button("❓ Question Generation"):
-        st.switch_page("3_Question_Generation")
+        st.switch_page("pages/3_Question_Generation.py")
 
 with col4:
     if st.button("🚪 Logout"):
         st.session_state["logged_in"] = False
-        st.switch_page("streamlit_app")
+        st.switch_page("streamlit_app.py")
 st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
