@@ -7,9 +7,9 @@ if not st.session_state["logged_in"]:
     st.switch_page("streamlit_app.py")
 
 st.sidebar.title("📚 EduAssist Navigation")
-st.sidebar.page_link("Home.py", label="🏠 Dashboard")
-st.sidebar.page_link("Summarization.py", label="📝 Summarization")
-st.sidebar.page_link("Question_Generation.py", label="❓ Question Generation")
+st.sidebar.page_link("pages/Home.py", label="🏠 Dashboard")
+st.sidebar.page_link("pages/Summarization.py", label="📝 Summarization")
+st.sidebar.page_link("pages/Question_Generation.py", label="❓ Question Generation")
 
 if st.sidebar.button("🚪 Logout"):
     logout()
