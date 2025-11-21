@@ -80,7 +80,7 @@ st.markdown("""
         <a href="#home" id="home">🏠 Home</a>
     </div>
     <div class="nav-right">
-        <a href="#summarization" id="summarization">📝 Summarization</a>
+        <a href="pages/2_summarization.py" id="summarization">📝 Summarization</a>
         <a href="#question" id="question">❓ Question Generation</a>
         <a href="#logout" id="logout">🚪 Logout</a>
     </div>
