@@ -11,5 +11,5 @@ st.write("Enter educational content to generate a summary.")
 
 text = st.text_area("Enter text to summarize:")
 
-if st.button("Generate Summary"):
+if st.button("Generate the Summary"):
     st.success("Summary will appear here (model integration pending).")
