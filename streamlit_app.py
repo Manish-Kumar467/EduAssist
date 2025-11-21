@@ -10,7 +10,7 @@ def login():
     if st.button("Login"):
         if username == "admin" and password == "1234":
             st.session_state["logged_in"] = True
-            st.switch_page("pages/4_Home.py")  # ✅ no leading slash
+            st.switch_page("pages/1_Home.py")  # ✅ no leading slash
         else:
             st.error("Invalid username or password")
 
@@ -21,4 +21,4 @@ if "logged_in" not in st.session_state:
 if not st.session_state["logged_in"]:
     login()
 else:
-    st.switch_page("pages/4_Home.py")  # ✅ same relative path
+    st.switch_page("pages/1_Home.py")  # ✅ same relative path
