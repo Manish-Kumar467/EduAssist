@@ -27,6 +27,12 @@ st.markdown("""
         
         border-radius: 0 0 15px 15px;
     }
+            .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
 
     /* Center the buttons */
     .navbar button {
