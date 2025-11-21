@@ -1,11 +1,21 @@
-import streamlit as st # type: ignore
+import streamlit as st
+from utils import init_session, login
 
-st.set_page_config(page_title="EduAssist", page_icon="🎓", layout="wide")
+st.set_page_config(page_title="EduAssist Login", page_icon="🎓", layout="centered")
 
-st.title("🎓 EduAssist – AI-Powered Learning Assistant")
-st.write("Welcome! This is a test deployment of your Streamlit app.")
-st.write("If you see this message, your app is running correctly!")
+init_session()
 
-text = st.text_area("Enter some text to summarize:")
-if st.button("Summarize"):
-    st.write("👉 Summary will appear here.")
+if st.session_state["logged_in"] is True:
+    st.switch_page("Home.py")
+
+st.title("🔐 Login to EduAssist")
+
+username = st.text_input("Username")
+password = st.text_input("Password", type="password")
+
+if st.button("Login"):
+    if login(username, password):
+        st.success("Login successful!")
+        st.switch_page("Home.py")
+    else:
+        st.error("Invalid username or password")
