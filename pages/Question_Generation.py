@@ -4,7 +4,7 @@ from utils import init_session
 init_session()
 
 if not st.session_state["logged_in"]:
-    st.switch_page("app")
+    st.switch_page("streamlit_app")
 
 st.title("❓ Question Generation Module")
 st.write("Enter content to generate questions.")
