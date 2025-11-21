@@ -22,15 +22,11 @@ st.markdown("""
     /* Navbar style */
     .navbar {
         background-color: #4B4BFF;
-        padding: 15px 30px;
+        padding: 10px 20px;
         border-radius: 10px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
         margin-bottom: 40px;
         color: white;
         font-weight: bold;
-        font-size: 18px;
     }
     .navbar button {
         background-color: transparent;
@@ -38,9 +34,10 @@ st.markdown("""
         color: white;
         font-size: 16px;
         cursor: pointer;
-        transition: 0.2s;
-        padding: 10px 20px;
+        margin-right: 20px;
+        padding: 8px 15px;
         border-radius: 5px;
+        transition: 0.2s;
     }
     .navbar button:hover {
         background-color: rgba(255,255,255,0.2);
@@ -71,24 +68,34 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Navbar Simulation
+# Navbar using Streamlit buttons
 # -----------------------------
-st.markdown(
-    """
-    <div class="navbar">
-        <button onclick="window.location.href='#'">🏠 Home</button>
-        <button onclick="window.location.href='#summarization'">📝 Summarization</button>
-        <button onclick="window.location.href='#question'">❓ Question Generation</button>
-        <button onclick="window.location.href='#logout'">🚪 Logout</button>
-    </div>
-    """, unsafe_allow_html=True
-)
+st.markdown("<div class='navbar'>", unsafe_allow_html=True)
+col1, col2, col3, col4 = st.columns([1,1,1,1])
+
+with col1:
+    if st.button("🏠 Home"):
+        st.experimental_rerun()  # reload current page
+
+with col2:
+    if st.button("📝 Summarization"):
+        st.switch_page("2_Summarization")
+
+with col3:
+    if st.button("❓ Question Generation"):
+        st.switch_page("3_Question_Generation")
+
+with col4:
+    if st.button("🚪 Logout"):
+        st.session_state["logged_in"] = False
+        st.switch_page("streamlit_app")
+st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
 # Page Title
 # -----------------------------
 st.markdown("<h1 style='text-align: center; color: #4B4BFF;'>Welcome to EduAssist 🎓</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size:18px;'>Select a module from above or scroll down to explore.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size:18px;'>Select a module below to get started.</p>", unsafe_allow_html=True)
 st.write("---")
 
 # -----------------------------
@@ -108,7 +115,7 @@ modules = [
     {
         "title": "📊 Analytics Dashboard",
         "desc": "Track your learning progress and module usage statistics.",
-        "page": None  # Optional
+        "page": None
     }
 ]
 
@@ -121,7 +128,7 @@ for module in modules:
     """, unsafe_allow_html=True)
 
 # -----------------------------
-# Buttons at the bottom for navigation
+# Optional bottom buttons for navigation
 # -----------------------------
 col1, col2, col3 = st.columns(3)
 with col1:
