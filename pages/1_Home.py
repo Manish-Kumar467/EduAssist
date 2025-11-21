@@ -21,51 +21,51 @@ st.markdown("""
 
     /* Navbar style */
     .navbar {
-        background-color: #4B4BFF;
-        padding: 10px 20px;
-        border-radius: 10px;
-        margin-bottom: 40px;
-        color: white;
-        font-weight: bold;
-    }
-    .navbar button {
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        margin-right: 20px;
-        padding: 8px 15px;
-        border-radius: 5px;
-        transition: 0.2s;
-    }
-    .navbar button:hover {
-        background-color: rgba(255,255,255,0.2);
-    }
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
 
-    /* Card style with fade-in */
-    .card {
-        background-color: #f0f2f6;
-        padding: 30px;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        margin-bottom: 30px;
-        opacity: 0;
-        transform: translateY(50px);
-        animation: fadeInUp 0.8s forwards;
-    }
+/* Button style */
+.navbar button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.navbar button:hover {
+    background-color: rgba(255,255,255,0.2);
+}
 
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* Card style with fade-in */
+.card {
+    background-color: #f0f2f6;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.8s forwards;
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-    .card h2 { font-size: 24px; margin-bottom: 10px; }
-    .card p { font-size: 16px; color: #555; }
-    </style>
+}
+.card h2 { font-size: 24px; margin-bottom: 10px; }
+.card p { font-size: 16px; color: #555; }
+</style>
 """, unsafe_allow_html=True)
+
+
 
 # -----------------------------
 # Navbar using Streamlit buttons
