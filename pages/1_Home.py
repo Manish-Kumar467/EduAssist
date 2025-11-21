@@ -14,65 +14,64 @@ st.set_page_config(
 # Hide default Streamlit UI
 # -----------------------------
 st.markdown("""
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
 
-    /* Navbar container */
-    .navbar {
-        width: 100%;
-        background-color: #4B4BFF;
-        height:10vh;
-        
-        border-radius: 0 0 15px 15px;
-    }
-            .navbar {
+/* Remove Streamlit top padding */
+.block-container {
+    padding-top: 0rem;
+}
+
+/* Website-style navbar */
+.navbar {
+    width: 100%;
+    background-color: #4B4BFF;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+/* Navbar links */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 15px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
 
-    /* Center the buttons */
-    .navbar button {
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 10px 25px;
-        border-radius: 8px;
-        transition: 0.3s;
-        margin: 0 10px;
-    }
+.navbar a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
 
-    .navbar button:hover {
-        background-color: rgba(255,255,255,0.2);
-    }
-
-    /* Card style */
-    .card {
-        background-color: #f0f2f6;
-        padding: 30px;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        margin-bottom: 30px;
-        opacity: 0;
-        transform: translateY(50px);
-        animation: fadeInUp 0.8s forwards;
-    }
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .card h2 { font-size: 24px; margin-bottom: 10px; }
-    .card p { font-size: 16px; color: #555; }
-    </style>
+/* Card style */
+.card {
+    background-color: #f0f2f6;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.8s forwards;
+}
+@keyframes fadeInUp {
+    to { opacity:1; transform: translateY(0); }
+}
+.card h2 { font-size: 24px; margin-bottom: 10px; }
+.card p { font-size: 16px; color: #555; }
+</style>
 """, unsafe_allow_html=True)
 
 
