@@ -13,70 +13,126 @@ st.set_page_config(
 # -----------------------------
 # Hide default Streamlit UI
 # -----------------------------
-hide_streamlit_style = """
+st.markdown("""
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    
-    /* Custom card style */
+
+    /* Navbar style */
+    .navbar {
+        background-color: #4B4BFF;
+        padding: 15px 30px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 40px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .navbar button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    .navbar button:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    /* Card style with fade-in */
     .card {
         background-color: #f0f2f6;
         padding: 30px;
         border-radius: 15px;
         text-align: center;
-        transition: transform 0.2s;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 0.8s forwards;
     }
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    .card h2 {
-        font-size: 28px;
-        margin-bottom: 10px;
-    }
-    .card p {
-        font-size: 16px;
-        color: #555;
-    }
+    .card h2 { font-size: 24px; margin-bottom: 10px; }
+    .card p { font-size: 16px; color: #555; }
     </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# Navbar Simulation
+# -----------------------------
+st.markdown(
+    """
+    <div class="navbar">
+        <button onclick="window.location.href='#'">🏠 Home</button>
+        <button onclick="window.location.href='#summarization'">📝 Summarization</button>
+        <button onclick="window.location.href='#question'">❓ Question Generation</button>
+        <button onclick="window.location.href='#logout'">🚪 Logout</button>
+    </div>
+    """, unsafe_allow_html=True
+)
 
 # -----------------------------
 # Page Title
 # -----------------------------
-st.markdown("<h1 style='text-align: center; color: #4B4BFF;'>🏠 EduAssist Home</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size:18px;'>Welcome! Choose a module to continue:</p>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #4B4BFF;'>Welcome to EduAssist 🎓</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size:18px;'>Select a module from above or scroll down to explore.</p>", unsafe_allow_html=True)
 st.write("---")
 
 # -----------------------------
 # Module Cards
 # -----------------------------
-col1, col2, col3 = st.columns(3)
+modules = [
+    {
+        "title": "📝 Summarization Module",
+        "desc": "Automatically summarize long documents or articles into concise summaries.",
+        "page": "2_Summarization"
+    },
+    {
+        "title": "❓ Question Generation",
+        "desc": "Generate relevant questions from any text to aid in learning or quizzes.",
+        "page": "3_Question_Generation"
+    },
+    {
+        "title": "📊 Analytics Dashboard",
+        "desc": "Track your learning progress and module usage statistics.",
+        "page": None  # Optional
+    }
+]
 
+for module in modules:
+    st.markdown(f"""
+        <div class="card">
+            <h2>{module['title']}</h2>
+            <p>{module['desc']}</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+# -----------------------------
+# Buttons at the bottom for navigation
+# -----------------------------
+col1, col2, col3 = st.columns(3)
 with col1:
-    if st.button("📝 Summarisation Module", key="sum"):
-        st.switch_page("pages/2_Summarization.py")  # Page name only
+    if st.button("📝 Go to Summarization"):
+        st.switch_page("2_Summarization")
 
 with col2:
-    if st.button("❓ Question Generation", key="qgen"):
-        st.switch_page("pages/3_Question_Generation.py")  # Page name only
+    if st.button("❓ Go to Question Generation"):
+        st.switch_page("3_Question_Generation")
 
 with col3:
-    if st.button("🚪 Logout", key="logout"):
+    if st.button("🚪 Logout"):
         st.session_state["logged_in"] = False
-        st.switch_page("streamlit_app")  # Main login page
-
-# -----------------------------
-# Optional: Add image or illustration
-# -----------------------------
-st.markdown(
-    """
-    <div style='text-align:center; margin-top:40px;'>
-        <img src='https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-education-online-learning-flaticons-lineal-color-flat-icons.png' 
-        alt='EduAssist' style='width:150px; height:auto;'>
-    </div>
-    """, unsafe_allow_html=True
-)
+        st.switch_page("streamlit_app")
