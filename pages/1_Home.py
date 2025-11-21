@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # -----------------------------
-# Hide default Streamlit UI
+# Hide default Streamlit UI and remove padding
 # -----------------------------
 st.markdown("""
 <style>
@@ -19,38 +19,39 @@ st.markdown("""
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-/* Remove Streamlit top padding */
+/* Remove top padding */
 .block-container {
     padding-top: 0rem;
 }
 
-/* Website-style navbar */
+/* Navbar container */
 .navbar {
     width: 100%;
     background-color: #4B4BFF;
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center; /* center buttons */
+    gap: 30px;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 0 0 15px 15px;
 }
 
-/* Navbar links */
-.navbar a {
+/* Style Streamlit buttons to look like links */
+.navbar .stButton>button {
+    background-color: transparent;
     color: white;
-    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    margin: 0 15px;
-    padding: 8px 15px;
+    padding: 8px 20px;
     border-radius: 8px;
     transition: 0.3s;
+    border: none;
 }
 
-.navbar a:hover {
+.navbar .stButton>button:hover {
     background-color: rgba(255,255,255,0.2);
 }
 
@@ -74,43 +75,28 @@ header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<div class="navbar">
-    <div class="nav-left">
-        <a href="#home" id="home">🏠 Home</a>
-    </div>
-    <div class="nav-right">
-        <a href="pages/2_summarization.py" id="summarization">📝 Summarization</a>
-        <a href="#question" id="question">❓ Question Generation</a>
-        <a href="#logout" id="logout">🚪 Logout</a>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
 # -----------------------------
-# Navbar using Streamlit buttons
+# Navbar with Streamlit buttons
 # -----------------------------
-st.markdown("<div class='navbar'>", unsafe_allow_html=True)
-col1, col2, col3, col4 = st.columns([1,1,1,1])
-
-with col1:
-    if st.button("🏠 Home" ):
-        st.switch_page("pages/1_Home.py")
-        
-
-with col2:
-    if st.button("📝 Summarization"):
-        st.switch_page("pages/2_Summarization.py")
-
-with col3:
-    if st.button("❓ Question Generation"):
-        st.switch_page("pages/3_Question_Generation.py")
-
-with col4:
-    if st.button("🚪 Logout"):
-        st.session_state["logged_in"] = False
-        st.switch_page("streamlit_app.py")
-st.markdown("</div>", unsafe_allow_html=True)
+navbar = st.container()
+with navbar:
+    st.markdown("<div class='navbar'>", unsafe_allow_html=True)
+    # Add buttons horizontally inside navbar
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        if st.button("🏠 Home", key="nav_home"):
+            pass
+    with col2:
+        if st.button("📝 Summarization", key="nav_sum"):
+            st.switch_page("pages/2_Summarization.py")
+    with col3:
+        if st.button("❓ Question Generation", key="nav_qgen"):
+            st.switch_page("pages/3_Question_Generation.py")
+    with col4:
+        if st.button("🚪 Logout", key="nav_logout"):
+            st.session_state["logged_in"] = False
+            st.switch_page("streamlit_app.py")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
 # Page Title
@@ -123,21 +109,9 @@ st.write("---")
 # Module Cards
 # -----------------------------
 modules = [
-    {
-        "title": "📝 Summarization Module",
-        "desc": "Automatically summarize long documents or articles into concise summaries.",
-        "page": "2_Summarization"
-    },
-    {
-        "title": "❓ Question Generation",
-        "desc": "Generate relevant questions from any text to aid in learning or quizzes.",
-        "page": "3_Question_Generation"
-    },
-    {
-        "title": "📊 Analytics Dashboard",
-        "desc": "Track your learning progress and module usage statistics.",
-        "page": None
-    }
+    {"title": "📝 Summarization Module", "desc": "Automatically summarize long documents or articles into concise summaries.", "page": "2_Summarization"},
+    {"title": "❓ Question Generation", "desc": "Generate relevant questions from any text to aid in learning or quizzes.", "page": "3_Question_Generation"},
+    {"title": "📊 Analytics Dashboard", "desc": "Track your learning progress and module usage statistics.", "page": None}
 ]
 
 for module in modules:
@@ -147,8 +121,3 @@ for module in modules:
             <p>{module['desc']}</p>
         </div>
     """, unsafe_allow_html=True)
-
-# -----------------------------
-# Optional bottom buttons for navigation
-# -----------------------------
-
