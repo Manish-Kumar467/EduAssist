@@ -7,11 +7,11 @@ col1, col2 = st.columns(2)
 
 with col1:
     if st.button("📝 Summarisation Module"):
-        st.switch_page("pages/2_Summarisation.py")
+        st.switch_page("2_Summarization.py")
 
 with col2:
     if st.button("❓ Question Generation"):
-        st.switch_page("pages/3_Question_Generation.py")
+        st.switch_page("3_Question_Generation.py")
 
 if st.button("🚪 Logout"):
     st.session_state["logged_in"] = False
