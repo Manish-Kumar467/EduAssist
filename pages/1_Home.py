@@ -74,7 +74,18 @@ header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-
+st.markdown("""
+<div class="navbar">
+    <div class="nav-left">
+        <a href="#home" id="home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+        <a href="#summarization" id="summarization">📝 Summarization</a>
+        <a href="#question" id="question">❓ Question Generation</a>
+        <a href="#logout" id="logout">🚪 Logout</a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # -----------------------------
 # Navbar using Streamlit buttons
