@@ -1,21 +1,24 @@
 import streamlit as st
-from utils import init_session, login
 
-st.set_page_config(page_title="EduAssist Login", page_icon="🎓", layout="centered")
+def login():
+    st.title("🔐 EduAssist Login")
+    st.write("Enter your admin credentials to continue.")
 
-init_session()
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
 
-if st.session_state["logged_in"] is True:
-    st.switch_page("pages/Home")
+    if st.button("Login"):
+        if username == "admin" and password == "1234":
+            st.session_state["logged_in"] = True
+            st.switch_page("pages/4_Home.py")  # ✅ no leading slash
+        else:
+            st.error("Invalid username or password")
 
-st.title("🔐 Login to EduAssist")
+# --------- PAGE ENTRY ----------
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
 
-username = st.text_input("Username")
-password = st.text_input("Password", type="password")
-
-if st.button("Login"):
-    if login(username, password):
-        st.success("Login successful!")
-        st.switch_page("pages/Home")
-    else:
-        st.error("Invalid username or password")
+if not st.session_state["logged_in"]:
+    login()
+else:
+    st.switch_page("pages/4_Home.py")  # ✅ same relative path
