@@ -7,7 +7,7 @@ if not st.session_state["logged_in"]:
     st.switch_page("streamlit_app")
 
 st.sidebar.title("📚 EduAssist Navigation")
-st.sidebar.page_link("pages/dashboard", label="🏠 Dashboard")
+st.sidebar.page_link("dashboard", label="🏠 Dashboard")
 st.sidebar.page_link("pages/Summarization", label="📝 Summarization")
 st.sidebar.page_link("pages/Question_Generation", label="❓ Question Generation")
 
