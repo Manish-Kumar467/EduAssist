@@ -16,6 +16,6 @@ password = st.text_input("Password", type="password")
 if st.button("Login"):
     if login(username, password):
         st.success("Login successful!")
-        st.switch_page("Home.py")
+        st.switch_page("pages/Home.py")
     else:
         st.error("Invalid username or password")
