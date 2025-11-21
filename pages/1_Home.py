@@ -58,11 +58,11 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     if st.button("📝 Summarisation Module", key="sum"):
-        st.switch_page("2_Summarization")  # Page name only
+        st.switch_page("pages/2_Summarization.py")  # Page name only
 
 with col2:
     if st.button("❓ Question Generation", key="qgen"):
-        st.switch_page("3_Question_Generation")  # Page name only
+        st.switch_page("pages/3_Question_Generation.py")  # Page name only
 
 with col3:
     if st.button("🚪 Logout", key="logout"):
